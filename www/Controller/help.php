@@ -4,7 +4,8 @@ class Help extends  Controller {
 	function __construct()
 	{
 		parent::__construct();
-		echo 'inside help';
+		$this->view->msg = 'This page is the help page';
+		$this->view->render('help');
 	}
 	function venue($id = 0)
 	{
