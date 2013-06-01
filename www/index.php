@@ -3,8 +3,22 @@
 <head>
 <title>Sitebook</title>
 <script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery-ui.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="assets/css/site.css" media="all">
+<link rel="stylesheet" type="text/css" href="assets/css/jquery-ui.css" media="all">
+<script>
+  $(function() {
+    var availableTags = [
+	"Mckinney Cotton Mill, Dallas, Tx",
+	"Southside on Llamar, Dallas, Tx",
+	"Fort Worth Japanese Botanic Gardens, Fort Worth, Tx",
+    ];
+    $( "#search" ).autocomplete({
+      source: availableTags
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -13,8 +27,6 @@
 <nav>
 	<div id="navleft">
 		<a href="#" id="logo"><img src="logo.png"/></a>
-		<input type="text" placeholder="Search venues" />
-		<a href="#">Browse</a>
 	</div>	
 	<div id="navright">
 		<a href="#">Sign up</a>
@@ -28,7 +40,7 @@
 <div class="container leftalign">
 <h1>Book a location for your photo shoot</h1>
 <form>
-	<input type="text" name="q" placeholder="Search by city, zip code, location name, or any keyword" /><input type="submit" name="submit" value="Show Locations" class="btn" />
+	<input type="text" id="search" name="q" placeholder="Search by city, zip code, location name, or any keyword" /><input type="submit" name="submit" value="Show Locations" class="btn" />
 </form>
 </div>
 </section>
