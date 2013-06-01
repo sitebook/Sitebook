@@ -7,7 +7,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 CREATE TABLE `availability` (
-  `availability_id` varchar(36) DEFAULT NULL,
+  `availability_id` varchar(36) Primary Key,
   `site_id` varchar(36) DEFAULT NULL,
   `start_time` date DEFAULT NULL,
   `end_time` date DEFAULT NULL
@@ -18,7 +18,8 @@ CREATE TABLE `booking` (
   `availability_id` varchar(36) DEFAULT NULL,
   `customer_id` varchar(36) DEFAULT NULL,
   `payment_id` varchar(36) DEFAULT NULL,
-  PRIMARY KEY (`booking_id`)
+  PRIMARY KEY (`booking_id`),
+  FOREIGN KEY (availability_id) REFERENCES availability(availability_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `customer` (
@@ -26,28 +27,16 @@ CREATE TABLE `customer` (
   `customer_name` varchar(256) CHARACTER SET utf8 DEFAULT NULL,
   `customer_address` varchar(256) DEFAULT NULL,
   `customer_email` varchar(256) DEFAULT NULL,
-  `customer_contact` varchar(256) DEFAULT NULL,
+  `customer_phone` varchar(256) DEFAULT NULL,
   `customer_password` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `payment` (
-  `payment_id` varchar(36) DEFAULT NULL,
-  `card_type` varchar(10) DEFAULT NULL,
-  `first_name` varchar(256) DEFAULT NULL,
-  `last_name` varchar(256) DEFAULT NULL,
-  `card_number` varchar(20) DEFAULT NULL,
-  `zip_code` char(10) DEFAULT NULL,
-  `expiration_month` varchar(10) DEFAULT NULL,
-  `expiration_year` smallint(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 CREATE TABLE `schedule` (
-  `schedule_id` varchar(36) DEFAULT NULL,
+  `schedule_id` varchar(36) PRIMARY KEY,
   `site_id` varchar(36) DEFAULT NULL,
-  `use_count` smallint(6) DEFAULT NULL,
   `start_time` date DEFAULT NULL,
-  `duration` smallint(6) DEFAULT NULL
+  `duration_minutes` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `site` (
