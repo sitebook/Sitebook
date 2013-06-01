@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TRpcProtocol</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TRpcProtocol</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-descendents">Descendents</a>
+			|											<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">TRpcProtocol class</p>
+<p class="description"><p>TRpcProtocol is the base class used to implement a protocol in a <a href="../System.Web.Services/TRpcService.html">TRpcService</a>.  Prado already implements two protocols: <a href="../System.Web.Services/TXmlRpcProtocol.html">TXmlRpcProtocol</a> for Xml-Rpc request  and <a href="../System.Web.Services/TJsonRpcProtocol.html">TJsonRpcProtocol</a> for JSON-Rpc requests.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Robin J. Rogge &lt;<a href="mailto:rrogge@bigpoint.net">rrogge@bigpoint.net</a>&gt;</li>
+				<li><span class="field">version:</span> $Id$</li>
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">since:</span> 3.2</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Web---Services---TRpcService.php.html">/Web/Services/TRpcService.php</a> (line <span class="field">357</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+	<a name="sec-descendents"></a>
+	<div class="info-box">
+		<div class="info-box-title">Direct descendents</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Descendents</span>
+			|												<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+								|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../System.Web.Services/TJsonRpcProtocol.html">TJsonRpcProtocol</a></td>
+					<td>
+											TJsonRpcProtocol class
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../System.Web.Services/TXmlRpcProtocol.html">TXmlRpcProtocol</a></td>
+					<td>
+											TXmlRpcProtocol class
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+																								<div class="var-title">
+					<span class="var-type">array</span>
+					<a href="#$rpcMethods" title="details" class="var-name">$rpcMethods</a>
+				</div>
+											</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																												
+												<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#addMethod" title="details" class="method-name">addMethod</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$methodName</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$handlerDetails</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#callApiMethod" title="details" class="method-name">callApiMethod</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$methodName</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$parameters</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">processed</span>
+										<a href="#callMethod" title="details" class="method-name">callMethod</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestPayload</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">a</span>
+										<a href="#createErrorResponse" title="details" class="method-name">createErrorResponse</a>
+											(<span class="var-type"><a href="../System.Web.Services/TRpcException.html">TRpcException</a></span>&nbsp;<span class="var-name">$exception</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#createResponseHeaders" title="details" class="method-name">createResponseHeaders</a>
+											(<span class="var-type">response</span>&nbsp;<span class="var-name">$response</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#decode" title="details" class="method-name">decode</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#encode" title="details" class="method-name">encode</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$rpcMethods" id="$rpcMethods"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		<span class="var-title">
+			<span class="var-type">array</span>
+			<span class="var-name">$rpcMethods</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">362</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">var:</span> containing the mapping from RPC method names to the actual handlers</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	
+		
+		
+
+</div>
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+																	<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="methodaddMethod" id="addMethod"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">addMethod</span> (line <span class="line-number">408</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Registers a new RPC method and handler details</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			addMethod
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$methodName</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$handlerDetails</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$methodName</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$handlerDetails</span><span class="var-description">: containing the callback handler</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methodaddMethod">TXmlRpcProtocol::addMethod()</a>
+								: Registers a new RPC method and handler details
+							</li>
+				</ul>
+	</div>
+<a name="methodcallApiMethod" id="callApiMethod"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">callApiMethod</span> (line <span class="line-number">419</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Calls the callback handler for the given method</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> whatever the callback handler returns</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			callApiMethod
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$methodName</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$parameters</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$methodName</span><span class="var-description">: of the RPC</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$parameters</span><span class="var-description">: for the callback handler as provided by the client</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methodcallApiMethod">TJsonRpcProtocol::callApiMethod()</a>
+								: Calls the callback handler for the given method
+							</li>
+				</ul>
+	</div>
+<a name="methodcallMethod" id="callMethod"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">callMethod</span> (line <span class="line-number">372</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> response</li>
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">processed</span>
+		<span class="method-name">
+			callMethod
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$requestPayload</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$requestPayload</span><span class="var-description">: request payload  Processed the request ans returns the response, if any</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methodcallMethod">TJsonRpcProtocol::callMethod()</a>
+								: Handles the RPC request
+							</li>
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methodcallMethod">TXmlRpcProtocol::callMethod()</a>
+								: Handles the RPC request
+							</li>
+				</ul>
+	</div>
+<a name="methodcreateErrorResponse" id="createErrorResponse"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">createErrorResponse</span> (line <span class="line-number">379</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> response representing the error</li>
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">a</span>
+		<span class="method-name">
+			createErrorResponse
+		</span>
+					(<span class="var-type"><a href="../System.Web.Services/TRpcException.html">TRpcException</a></span>&nbsp;<span class="var-name">$exception</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.Services/TRpcException.html">TRpcException</a></span>
+				<span class="var-name">$exception</span><span class="var-description">: the exception with error details  Creates a proper response for an error condition</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methodcreateErrorResponse">TJsonRpcProtocol::createErrorResponse()</a>
+								: Turns the given exception into an JSON RPC fault
+							</li>
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methodcreateErrorResponse">TXmlRpcProtocol::createErrorResponse()</a>
+								: Turns the given exception into an XML RPC fault
+							</li>
+				</ul>
+	</div>
+<a name="methodcreateResponseHeaders" id="createResponseHeaders"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">createResponseHeaders</span> (line <span class="line-number">385</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			createResponseHeaders
+		</span>
+					(<span class="var-type">response</span>&nbsp;<span class="var-name">$response</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">response</span>
+				<span class="var-name">$response</span><span class="var-description">: Sets the needed headers for the response (eg: content-type, charset)</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methodcreateResponseHeaders">TJsonRpcProtocol::createResponseHeaders()</a>
+								: Sets the correct response headers
+							</li>
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methodcreateResponseHeaders">TXmlRpcProtocol::createResponseHeaders()</a>
+								: Sets the correct response headers
+							</li>
+				</ul>
+	</div>
+<a name="methoddecode" id="decode"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">decode</span> (line <span class="line-number">399</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Decodes the request payload</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> decoded request</li>
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			decode
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$data</span><span class="var-description">: request payload</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methoddecode">TJsonRpcProtocol::decode()</a>
+								: Decodes JSON encoded data into PHP data
+							</li>
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methoddecode">TXmlRpcProtocol::decode()</a>
+								: Decodes XML encoded data into PHP data
+							</li>
+				</ul>
+	</div>
+<a name="methodencode" id="encode"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">encode</span> (line <span class="line-number">392</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Encodes the response</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> encoded response</li>
+				<li><span class="field">abstract:</span> </li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			encode
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: reponse data</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Web.Services/TJsonRpcProtocol.html#methodencode">TJsonRpcProtocol::encode()</a>
+								: Encodes PHP data into JSON data
+							</li>
+					<li>
+				<a href="../System.Web.Services/TXmlRpcProtocol.html#methodencode">TXmlRpcProtocol::encode()</a>
+								: Encodes PHP data into XML data
+							</li>
+				</ul>
+	</div>
+						
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 19 Jan 2013 13:03:46 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

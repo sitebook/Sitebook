@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TRpcClient</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TRpcClient</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+							<a href="#sec-descendents">Descendents</a>
+			|													<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">TRpcClient class</p>
+<p class="description"><p>Note: When using setIsNotification(true), *every* following request is also  considered to be a notification until you use setIsNotification(false).</p><p>Usage:</p><p>First, you can use the factory:  <pre> $_rpcClient = TRpcClient::create('xml', 'http://host/server');
+ $_result = $_rpcClient->remoteMethodName($param, $otherParam);</pre></p><p>or as oneliner:  <pre> $_result = TRpcClient::create('json', 'http://host/server')->remoteMethod($param, ...);</pre></p><p>Second, you can also use the specific implementation directly:  <pre> $_rpcClient = new TXmlRpcClient('http://host/server');
+ $_result = $_rpcClient->remoteMethod($param, ...);</pre></p><p>or as oneliner:  <pre> $_result = TXmlRpcClient('http://host/server')->hello();</pre></p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Robin J. Rogge &lt;<a href="mailto:rrogge@bigpoint.net">rrogge@bigpoint.net</a>&gt;</li>
+				<li><span class="field">version:</span> $Id$</li>
+				<li><span class="field">since:</span> 3.2</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Util---TRpcClient.php.html">/Util/TRpcClient.php</a> (line <span class="field">49</span>)
+		</p>
+		
+				
+		<pre><a href="../System/TComponent.html">TComponent</a>
+   |
+   --<a href="../System/TApplicationComponent.html">TApplicationComponent</a>
+      |
+      --TRpcClient</pre>
+	
+			</div>
+</div>
+
+	<a name="sec-descendents"></a>
+	<div class="info-box">
+		<div class="info-box-title">Direct descendents</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+			<span class="disabled">Descendents</span>
+			|															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<table cellpadding="2" cellspacing="0" class="class-table">
+				<tr>
+					<th class="class-table-header">Class</th>
+					<th class="class-table-header">Description</th>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../System.Util/TJsonRpcClient.html">TJsonRpcClient</a></td>
+					<td>
+											TJsonRpcClient class
+										</td>
+				</tr>
+								<tr>
+					<td style="padding-right: 2em"><a href="../System.Util/TXmlRpcClient.html">TXmlRpcClient</a></td>
+					<td>
+											TXmlRpcClient class
+										</td>
+				</tr>
+							</table>
+		</div>
+	</div>
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																				<div class="method-definition">
+					static 						<span class="method-result"><a href="../System.Util/TRpcClient.html">TRpcClient</a></span>
+										<a href="#create" title="details" class="method-name">create</a>
+											(<span class="var-type"></span>&nbsp;<span class="var-name">$type</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$serverUrl</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$isNotification</span> = <span class="var-default">false</span>])
+									</div>
+																																																								
+												<div class="method-definition">
+											<span class="method-result">TRpcClient</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$serverUrl</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$isNotification</span> = <span class="var-default">false</span>])
+									</div>
+																								<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#createStreamContext" title="details" class="method-name">createStreamContext</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#getIsNotification" title="details" class="method-name">getIsNotification</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getServerUrl" title="details" class="method-name">getServerUrl</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#performRequest" title="details" class="method-name">performRequest</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$serverUrl</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$payload</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mimeType</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setIsNotification" title="details" class="method-name">setIsNotification</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$bool</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setServerUrl" title="details" class="method-name">setServerUrl</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+							<a href="#sec-descendents">Descendents</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodcreate" id="create"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">static method create</span> (line <span class="line-number">80</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates an instance of the requested RPC client type</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> instance</li>
+				<li><span class="field">throws:</span> TApplicationException if an unsupported RPC client type was specified</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+	    static
+		<span class="method-result"><a href="../System.Util/TRpcClient.html">TRpcClient</a></span>
+		<span class="method-name">
+			create
+		</span>
+					(<span class="var-type"></span>&nbsp;<span class="var-name">$type</span>, <span class="var-type"></span>&nbsp;<span class="var-name">$serverUrl</span>, [<span class="var-type"></span>&nbsp;<span class="var-name">$isNotification</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$type</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$serverUrl</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$isNotification</span>			</li>
+				</ul>
+		
+			
+			<hr class="separator" />
+		<div class="notes">Redefined in descendants as:</div>
+		<ul class="redefinitions">
+					<li>
+				<a href="../System.Util/TJsonRpcClient.html#methodcreate">TJsonRpcClient::create()</a>
+								: Creates an instance of TJsonRpcClient
+							</li>
+					<li>
+				<a href="../System.Util/TXmlRpcClient.html#methodcreate">TXmlRpcClient::create()</a>
+								: Creates an instance of TXmlRpcClient
+							</li>
+				</ul>
+	</div>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">67</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TRpcClient</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$serverUrl</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$isNotification</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$serverUrl</span><span class="var-description">: url to RPC server</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$isNotification</span><span class="var-description">: whether requests are considered to be notifications (completely ignoring the response) (default: false)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodcreateStreamContext" id="createStreamContext"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">createStreamContext</span> (line <span class="line-number">93</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Creates a stream context resource</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			createStreamContext
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$content</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$contentType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$content</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$contentType</span><span class="var-description">: mime type</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetIsNotification" id="getIsNotification"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIsNotification</span> (line <span class="line-number">123</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> whether requests are considered to be notifications (completely ignoring the response)</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getIsNotification
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetServerUrl" id="getServerUrl"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getServerUrl</span> (line <span class="line-number">139</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> url of the RPC server</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getServerUrl
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodperformRequest" id="performRequest"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">performRequest</span> (line <span class="line-number">110</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Performs the actual request</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			performRequest
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$serverUrl</span>, <span class="var-type">array</span>&nbsp;<span class="var-name">$payload</span>, <span class="var-type">string</span>&nbsp;<span class="var-name">$mimeType</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$serverUrl</span><span class="var-description">: RPC server URL</span>			</li>
+					<li>
+				<span class="var-type">array</span>
+				<span class="var-name">$payload</span><span class="var-description">: payload data</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$mimeType</span><span class="var-description">: request mime type</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetIsNotification" id="setIsNotification"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setIsNotification</span> (line <span class="line-number">131</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setIsNotification
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$bool</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$bool</span><span class="var-description">: boolean whether the requests are considered to be notifications (completely ignoring the response) (default: false)</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetServerUrl" id="setServerUrl"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setServerUrl</span> (line <span class="line-number">147</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setServerUrl
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: url of the RPC server</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System/TApplicationComponent.html">TApplicationComponent</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetApplication">TApplicationComponent::getApplication()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetRequest">TApplicationComponent::getRequest()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetResponse">TApplicationComponent::getResponse()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetService">TApplicationComponent::getService()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetSession">TApplicationComponent::getSession()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodgetUser">TApplicationComponent::getUser()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodpublishAsset">TApplicationComponent::publishAsset()</a></span><br>
+													<span class="method-name"><a href="../System/TApplicationComponent.html#methodpublishFilePath">TApplicationComponent::publishFilePath()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System/TComponent.html">TComponent</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System/TComponent.html#methodaddParsedObject">TComponent::addParsedObject()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodattachEventHandler">TComponent::attachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanGetProperty">TComponent::canGetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanSetProperty">TComponent::canSetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcreatedOnTemplate">TComponent::createdOnTemplate()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methoddetachEventHandler">TComponent::detachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateExpression">TComponent::evaluateExpression()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateStatements">TComponent::evaluateStatements()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetEventHandlers">TComponent::getEventHandlers()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetSubProperty">TComponent::getSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEvent">TComponent::hasEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEventHandler">TComponent::hasEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasProperty">TComponent::hasProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodraiseEvent">TComponent::raiseEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodsetSubProperty">TComponent::setSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__call">TComponent::__call()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__get">TComponent::__get()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__set">TComponent::__set()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__sleep">TComponent::__sleep()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__wakeup">TComponent::__wakeup()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 19 Jan 2013 13:03:45 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,923 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TWebControlDecorator</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TWebControlDecorator</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">TWebControlDecorator class</p>
+<p class="description"><p>A TWebControlDecorator can be applied to a <a href="../System.Web.UI.WebControls/TWebControl.html">TWebControl</a> to customize its rendering.  TWebControlDecorator can add custom html code before and after both the open and close  tag of a <a href="../System.Web.UI.WebControls/TWebControl.html">TWebControl</a>.  The html code can be an user-defined text or an external template file that will be  instantiated and rendered in place.</p><p>This is an easy way to have your look and feel depend upon the theme instead of writing  specific html in your templates to achieve your website desires.  Here is an example of how to code your theme skin:  <div class="src-code"><ol><li><div class="src-line">&nbsp;&lt;<span class="src-id">com</span>:<span class="src-id"><a href="../System.Web.UI.WebControls/THeader3.html">THeader3</a></span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">prop</span>:<span class="src-id">Decorator</span>.<span class="src-id">PreTagText</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-sym">!</span>--&nbsp;<span class="src-id">Surround&nbsp;the&nbsp;control&nbsp;with&nbsp;a&nbsp;div&nbsp;</span><span class="src-key">and&nbsp;</span><span class="src-id">apply&nbsp;a&nbsp;css&nbsp;</span><span class="src-key">class&nbsp;</span><span class="src-id">to&nbsp;it&nbsp;</span>--&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">div&nbsp;</span><span class="src-key">class</span>=<span class="src-str">&quot;imported-theme-h3-container&quot;</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">prop</span>:<span class="src-id">Decorator</span>.<span class="src-id">PreTagText</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-id">prop</span>:<span class="src-id">Decorator</span>.<span class="src-id">PostTagText</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="src-sym">!</span>--&nbsp;<span class="src-id">Properly&nbsp;close&nbsp;the&nbsp;tag&nbsp;</span>--&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">div</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="src-id">prop</span>:<span class="src-id">Decorator</span>.<span class="src-id">PostTagText</span>&gt;</div></li>
+<li><div class="src-line">&nbsp;&lt;/<span class="src-id">com</span>:<span class="src-id">THeader3</span>&gt;</div></li>
+</ol></div></p><p>The order of the inclusion of the decoration into the page goes like this:  * PreTagTemplate  * PreTagText  * TWebControl Open Tag Rendered  * PreContentsText  * PreContentsTemplate  * TWebControl Children Rendered  * PostContentsTemplate  * PostContentsText  * TWebControl CloseTag Rendered  * PostTagText  * PostTagTemplate</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Brad Anderson &lt;<a href="mailto:javalizard@gmail.com">javalizard@gmail.com</a>&gt;</li>
+				<li><span class="field">version:</span> $Id: TWebControlDecorator.php 2541 2008-10-21 15:05:13Z qiang.xue $</li>
+				<li><span class="field">since:</span> 3.2</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Web---UI---WebControls---TWebControlDecorator.php.html">/Web/UI/WebControls/TWebControlDecorator.php</a> (line <span class="field">59</span>)
+		</p>
+		
+				
+		<pre><a href="../System/TComponent.html">TComponent</a>
+   |
+   --TWebControlDecorator</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																												
+												<div class="method-definition">
+											<span class="method-result">TWebControlDecorator</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											(<span class="var-type"><a href="../System.Web.UI.WebControls/TWebControl.html">TWebControl</a></span>&nbsp;<span class="var-name">$control</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$onlyinternal</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#ensureTemplateDecoration" title="details" class="method-name">ensureTemplateDecoration</a>
+											([<span class="var-type"><a href="../System/TComponent.html">TComponent</a></span>&nbsp;<span class="var-name">$sender</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$param</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+										<a href="#getPostContentsTemplate" title="details" class="method-name">getPostContentsTemplate</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getPostContentsText" title="details" class="method-name">getPostContentsText</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+										<a href="#getPostTagTemplate" title="details" class="method-name">getPostTagTemplate</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getPostTagText" title="details" class="method-name">getPostTagText</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+										<a href="#getPreContentsTemplate" title="details" class="method-name">getPreContentsTemplate</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getPreContentsText" title="details" class="method-name">getPreContentsText</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+										<a href="#getPreTagTemplate" title="details" class="method-name">getPreTagTemplate</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">string</span>
+										<a href="#getPreTagText" title="details" class="method-name">getPreTagText</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#getUseState" title="details" class="method-name">getUseState</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#instantiate" title="details" class="method-name">instantiate</a>
+											([<span class="var-type"></span>&nbsp;<span class="var-name">$outercontrol</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#renderPostContentsText" title="details" class="method-name">renderPostContentsText</a>
+											(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#renderPostTagText" title="details" class="method-name">renderPostTagText</a>
+											(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#renderPreContentsText" title="details" class="method-name">renderPreContentsText</a>
+											(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#renderPreTagText" title="details" class="method-name">renderPreTagText</a>
+											(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPostContentsTemplate" title="details" class="method-name">setPostContentsTemplate</a>
+											(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPostContentsText" title="details" class="method-name">setPostContentsText</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPostTagTemplate" title="details" class="method-name">setPostTagTemplate</a>
+											(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPostTagText" title="details" class="method-name">setPostTagText</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPreContentsTemplate" title="details" class="method-name">setPreContentsTemplate</a>
+											(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPreContentsText" title="details" class="method-name">setPreContentsText</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPreTagTemplate" title="details" class="method-name">setPreTagTemplate</a>
+											(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPreTagText" title="details" class="method-name">setPreTagText</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setUseState" title="details" class="method-name">setUseState</a>
+											(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">130</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor.</p>
+<p class="description"><p>Initializes the control .</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TWebControlDecorator</span>
+		<span class="method-name">
+			__construct
+		</span>
+					(<span class="var-type"><a href="../System.Web.UI.WebControls/TWebControl.html">TWebControl</a></span>&nbsp;<span class="var-name">$control</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$onlyinternal</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.UI.WebControls/TWebControl.html">TWebControl</a></span>
+				<span class="var-name">$control</span><span class="var-description">: The control that is to be decorated.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$onlyinternal</span><span class="var-description">: whether decoration is just around the inner content</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodensureTemplateDecoration" id="ensureTemplateDecoration"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">ensureTemplateDecoration</span> (line <span class="line-number">306</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method places the templates around the open and close tag.  This takes a parameter which is</p>
+<p class="description"><p>to specify the control to get the outer template decoration.  If no outer control is specified</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> returns true if the template decorations have been added</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			ensureTemplateDecoration
+		</span>
+					([<span class="var-type"><a href="../System/TComponent.html">TComponent</a></span>&nbsp;<span class="var-name">$sender</span> = <span class="var-default">null</span>], [<span class="var-type"></span>&nbsp;<span class="var-name">$param</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System/TComponent.html">TComponent</a></span>
+				<span class="var-name">$sender</span><span class="var-description">: this indicates the component or control to get the outer tag elements, just in case it's  different than attached TWebControl.  If none is provided, the outer templates default to the attached  control</span>			</li>
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$param</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetPostContentsTemplate" id="getPostContentsTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostContentsTemplate</span> (line <span class="line-number">251</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the template before the close tag in the TWebControl.  Defaults to null.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+		<span class="method-name">
+			getPostContentsTemplate
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPostContentsText" id="getPostContentsText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostContentsText</span> (line <span class="line-number">187</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the text before the close tag in the TWebControl</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPostContentsText
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPostTagTemplate" id="getPostTagTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostTagTemplate</span> (line <span class="line-number">267</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the template after the close tag in the TWebControl.  Defaults to null.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+		<span class="method-name">
+			getPostTagTemplate
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPostTagText" id="getPostTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPostTagText</span> (line <span class="line-number">203</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the text before the close tag in the TWebControl</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPostTagText
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPreContentsTemplate" id="getPreContentsTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPreContentsTemplate</span> (line <span class="line-number">235</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the template after the open tag in the TWebControl.  Defaults to null.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+		<span class="method-name">
+			getPreContentsTemplate
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPreContentsText" id="getPreContentsText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPreContentsText</span> (line <span class="line-number">171</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the text after the open tag in the TWebControl</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPreContentsText
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPreTagTemplate" id="getPreTagTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPreTagTemplate</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the template before the open tag in the TWebControl.  Defaults to null.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result"><a href="../System.Web.UI/TTemplate.html">TTemplate</a>|null</span>
+		<span class="method-name">
+			getPreTagTemplate
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPreTagText" id="getPreTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPreTagText</span> (line <span class="line-number">155</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> gets the text before the open tag in the TWebControl</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">string</span>
+		<span class="method-name">
+			getPreTagText
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetUseState" id="getUseState"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getUseState</span> (line <span class="line-number">138</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> if the templates in this decoration need state.  This defaults to false</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getUseState
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodinstantiate" id="instantiate"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">instantiate</span> (line <span class="line-number">285</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">this is a framework call.  The Text decoration can't  influence the object hierarchy because they are rendered into into the writer directly.</p>
+<p class="description"><p>This call attaches the ensureTemplateDecoration to the TPage onSaveStateComplete so  these controls don't have page states.  This is as close to not influencing the page as possible.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			instantiate
+		</span>
+					([<span class="var-type"></span>&nbsp;<span class="var-name">$outercontrol</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"></span>
+				<span class="var-name">$outercontrol</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrenderPostContentsText" id="renderPostContentsText"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderPostContentsText</span> (line <span class="line-number">373</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method places the post contents text into the <a href="../System.IO/TTextWriter.html">TTextWriter</a></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			renderPostContentsText
+		</span>
+					(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">{@link</span>
+				<span class="var-name">$writer</span><span class="var-description">: TTextWriter} the writer to which the text is written</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrenderPostTagText" id="renderPostTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderPostTagText</span> (line <span class="line-number">381</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method places the post tag text into the <a href="../System.IO/TTextWriter.html">TTextWriter</a></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			renderPostTagText
+		</span>
+					(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">{@link</span>
+				<span class="var-name">$writer</span><span class="var-description">: TTextWriter} the writer to which the text is written</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrenderPreContentsText" id="renderPreContentsText"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderPreContentsText</span> (line <span class="line-number">365</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method places the pre contents text into the <a href="../System.IO/TTextWriter.html">TTextWriter</a></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			renderPreContentsText
+		</span>
+					(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">{@link</span>
+				<span class="var-name">$writer</span><span class="var-description">: TTextWriter} the writer to which the text is written</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodrenderPreTagText" id="renderPreTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">renderPreTagText</span> (line <span class="line-number">357</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This method places the pre tag text into the <a href="../System.IO/TTextWriter.html">TTextWriter</a></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			renderPreTagText
+		</span>
+					(<span class="var-type">{@link</span>&nbsp;<span class="var-name">$writer</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">{@link</span>
+				<span class="var-name">$writer</span><span class="var-description">: TTextWriter} the writer to which the text is written</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPostContentsTemplate" id="setPostContentsTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPostContentsTemplate</span> (line <span class="line-number">258</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPostContentsTemplate
+		</span>
+					(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>
+				<span class="var-name">$value</span><span class="var-description">: sets the template before the close tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPostContentsText" id="setPostContentsText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPostContentsText</span> (line <span class="line-number">194</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPostContentsText
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the text before the close tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPostTagTemplate" id="setPostTagTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPostTagTemplate</span> (line <span class="line-number">274</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPostTagTemplate
+		</span>
+					(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>
+				<span class="var-name">$value</span><span class="var-description">: sets the template before the close tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPostTagText" id="setPostTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPostTagText</span> (line <span class="line-number">210</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPostTagText
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the text after the close tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPreContentsTemplate" id="setPreContentsTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPreContentsTemplate</span> (line <span class="line-number">242</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPreContentsTemplate
+		</span>
+					(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>
+				<span class="var-name">$value</span><span class="var-description">: sets the template after the open tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPreContentsText" id="setPreContentsText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPreContentsText</span> (line <span class="line-number">178</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPreContentsText
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the text after the open tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPreTagTemplate" id="setPreTagTemplate"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPreTagTemplate</span> (line <span class="line-number">226</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPreTagTemplate
+		</span>
+					(<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type"><a href="../System.Web.UI/TTemplate.html">TTemplate</a></span>
+				<span class="var-name">$value</span><span class="var-description">: sets the template before the open tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPreTagText" id="setPreTagText"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPreTagText</span> (line <span class="line-number">162</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPreTagText
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the text before the open tag in the TWebControl</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetUseState" id="setUseState"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setUseState</span> (line <span class="line-number">147</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setUseState
+		</span>
+					(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$value</span><span class="var-description">: true to tell the decoration that the templates need state and should be  placed in a control step before the state is saved.</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System/TComponent.html">TComponent</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System/TComponent.html#methodaddParsedObject">TComponent::addParsedObject()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodattachEventHandler">TComponent::attachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanGetProperty">TComponent::canGetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanSetProperty">TComponent::canSetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcreatedOnTemplate">TComponent::createdOnTemplate()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methoddetachEventHandler">TComponent::detachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateExpression">TComponent::evaluateExpression()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateStatements">TComponent::evaluateStatements()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetEventHandlers">TComponent::getEventHandlers()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetSubProperty">TComponent::getSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEvent">TComponent::hasEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEventHandler">TComponent::hasEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasProperty">TComponent::hasProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodraiseEvent">TComponent::raiseEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodsetSubProperty">TComponent::setSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__call">TComponent::__call()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__get">TComponent::__get()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__set">TComponent::__set()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__sleep">TComponent::__sleep()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__wakeup">TComponent::__wakeup()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 19 Jan 2013 13:04:29 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

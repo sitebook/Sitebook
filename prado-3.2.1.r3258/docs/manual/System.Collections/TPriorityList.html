@@ -1,0 +1,1602 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TPriorityList</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TPriorityList</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">TPriorityList class</p>
+<p class="description"><p>TPriorityList implements a priority ordered list collection class.  It allows you to specify  any numeric for priorities down to a specific precision.  The lower the numeric, the high the priority of the item in the  list.  Thus -10 has a higher priority than -5, 0, 10 (the default), 18, 10005, etc.  Per <a href="http://www.php.net/round">http://www.php.net/round</a>, precision may be negative and  thus rounding can go by 10, 100, 1000, etc, instead of just .1, .01, .001, etc. The default precision allows for 8 decimal  places. There is also a default priority of 10, if no different default priority is specified or no item specific priority is indicated.  If you replace TList with this class it will  work exactly the same with items inserted set to the default priority, until you start  using different priorities than the default priority.</p><p>As you access the PHP array features of this class, it flattens and caches the results.  If at all possible, this  will keep the cache fresh even when manipulated.  If this is not possible the cache is cleared.  When an array of items are needed and the cache is outdated, the cache is recreated from the items and their priorities</p><p>You can access, append, insert, remove an item by using  <a href="../System.Collections/TPriorityList.html#methoditemAt">itemAt</a>, <a href="../System.Collections/TPriorityList.html#methodadd">add</a>, <a href="../System.Collections/TPriorityList.html#methodinsertAt">insertAt</a>, and <a href="../System.Collections/TPriorityList.html#methodremove">remove</a>.  To get the number of the items in the list, use <a href="../System.Collections/TPriorityList.html#methodgetCount">getCount</a>.  TPriorityList can also be used like a regular array as follows,  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$list</span><span class="src-sym">[</span><span class="src-sym">]</span>=<span class="src-var">$item</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;append&nbsp;with&nbsp;the&nbsp;default&nbsp;priority.&nbsp;&nbsp;It&nbsp;may&nbsp;not&nbsp;be&nbsp;the&nbsp;last&nbsp;item&nbsp;if&nbsp;other&nbsp;items&nbsp;in&nbsp;the&nbsp;list&nbsp;are&nbsp;prioritized&nbsp;after&nbsp;the&nbsp;default&nbsp;priority</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$list</span><span class="src-sym">[</span><span class="src-var">$index</span><span class="src-sym">]</span>=<span class="src-var">$item</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;$index&nbsp;must&nbsp;be&nbsp;between&nbsp;0&nbsp;and&nbsp;$list-&gt;Count-1.&nbsp;&nbsp;This&nbsp;sets&nbsp;the&nbsp;element&nbsp;regardless&nbsp;of&nbsp;priority.&nbsp;&nbsp;Priority&nbsp;stays&nbsp;the&nbsp;same.</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$list</span><span class="src-sym">[</span><span class="src-var">$index</span><span class="src-sym">]</span>=<span class="src-var">$item</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;$index&nbsp;is&nbsp;$list-&gt;Count.&nbsp;&nbsp;This&nbsp;appends&nbsp;the&nbsp;item&nbsp;to&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;list&nbsp;with&nbsp;the&nbsp;same&nbsp;priority&nbsp;as&nbsp;the&nbsp;last&nbsp;item&nbsp;in&nbsp;the&nbsp;list.</span></div></li>
+<li><div class="src-line">&nbsp;unset<span class="src-sym">(</span><span class="src-var">$list</span><span class="src-sym">[</span><span class="src-var">$index</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;remove&nbsp;the&nbsp;item&nbsp;at&nbsp;$index</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$list</span><span class="src-sym">[</span><span class="src-var">$index</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-comm">//&nbsp;if&nbsp;the&nbsp;list&nbsp;has&nbsp;an&nbsp;item&nbsp;at&nbsp;$index</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">foreach</span><span class="src-sym">(</span><span class="src-var">$list&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$index</span>=&gt;<span class="src-var">$item</span><span class="src-sym">)&nbsp;</span><span class="src-comm">//&nbsp;traverse&nbsp;each&nbsp;item&nbsp;in&nbsp;the&nbsp;list&nbsp;in&nbsp;proper&nbsp;priority&nbsp;order&nbsp;and&nbsp;add/insert&nbsp;order</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$n</span>=<a href="../System.Collections/TPriorityList.html#methodcount">count</a><span class="src-sym">(</span><span class="src-var">$list</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;returns&nbsp;the&nbsp;number&nbsp;of&nbsp;items&nbsp;in&nbsp;the&nbsp;list</span></div></li>
+</ol></div></p><p>To extend TPriorityList for doing your own operations with each addition or removal,  override <a href="../System.Collections/TPriorityList.html#methodinsertAtIndexInPriority">insertAtIndexInPriority()</a> and <a href="../System.Collections/TPriorityList.html#methodremoveAtIndexInPriority">removeAtIndexInPriority()</a> and then call the parent.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Brad Anderson &lt;<a href="mailto:javalizard@gmail.com">javalizard@gmail.com</a>&gt;</li>
+				<li><span class="field">version:</span> $Id: TPriorityList.php 2541 2008-10-21 15:05:13Z javalizard $</li>
+				<li><span class="field">since:</span> 3.2a</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Collections---TPriorityList.php.html">/Collections/TPriorityList.php</a> (line <span class="field">50</span>)
+		</p>
+		
+				
+		<pre><a href="../System/TComponent.html">TComponent</a>
+   |
+   --<a href="../System.Collections/TList.html">TList</a>
+      |
+      --TPriorityList</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																																																																				
+												<div class="method-definition">
+											<span class="method-result">TPriorityList</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type">array|Iterator</span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$readOnly</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$defaultPriority</span> = <span class="var-default">10</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$precision</span> = <span class="var-default">8</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">int</span>
+										<a href="#add" title="details" class="method-name">add</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#clear" title="details" class="method-name">clear</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#contains" title="details" class="method-name">contains</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#copyFrom" title="details" class="method-name">copyFrom</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#count" title="details" class="method-name">count</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#flattenPriorities" title="details" class="method-name">flattenPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getCount" title="details" class="method-name">getCount</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#getDefaultPriority" title="details" class="method-name">getDefaultPriority</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Iterator</span>
+										<a href="#getIterator" title="details" class="method-name">getIterator</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getPrecision" title="details" class="method-name">getPrecision</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getPriorities" title="details" class="method-name">getPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getPriorityCount" title="details" class="method-name">getPriorityCount</a>
+											([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#indexOf" title="details" class="method-name">indexOf</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#insertAfter" title="details" class="method-name">insertAfter</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$indexitem</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#insertAt" title="details" class="method-name">insertAt</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#insertAtIndexInPriority" title="details" class="method-name">insertAtIndexInPriority</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$preserveCache</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#insertBefore" title="details" class="method-name">insertBefore</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$indexitem</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#itemAt" title="details" class="method-name">itemAt</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#itemAtIndexInPriority" title="details" class="method-name">itemAtIndexInPriority</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#itemsAtPriority" title="details" class="method-name">itemsAtPriority</a>
+											([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mergeWith" title="details" class="method-name">mergeWith</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#offsetExists" title="details" class="method-name">offsetExists</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#offsetGet" title="details" class="method-name">offsetGet</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#offsetSet" title="details" class="method-name">offsetSet</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#offsetUnset" title="details" class="method-name">offsetUnset</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric|array</span>
+										<a href="#priorityAt" title="details" class="method-name">priorityAt</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$withindex</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric|array</span>
+										<a href="#priorityOf" title="details" class="method-name">priorityOf</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$withindex</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#remove" title="details" class="method-name">remove</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#removeAt" title="details" class="method-name">removeAt</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#removeAtIndexInPriority" title="details" class="method-name">removeAtIndexInPriority</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setDefaultPriority" title="details" class="method-name">setDefaultPriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPrecision" title="details" class="method-name">setPrecision</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#sortPriorities" title="details" class="method-name">sortPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArray" title="details" class="method-name">toArray</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArrayAbovePriority" title="details" class="method-name">toArrayAbovePriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">true</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArrayBelowPriority" title="details" class="method-name">toArrayBelowPriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toPriorityArray" title="details" class="method-name">toPriorityArray</a>
+										()
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">86</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor.</p>
+<p class="description"><p>Initializes the list with an array or an iterable object.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is not null and is neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TPriorityList</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type">array|Iterator</span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$readOnly</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$defaultPriority</span> = <span class="var-default">10</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$precision</span> = <span class="var-default">8</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">array|Iterator</span>
+				<span class="var-name">$data</span><span class="var-description">: the intial data. Default is null, meaning no initial data.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$readOnly</span><span class="var-description">: whether the list is read-only</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$defaultPriority</span><span class="var-description">: the default priority of items without specified priorities.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$precision</span><span class="var-description">: the precision of the numeric priorities</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#method__construct">TList::__construct()</a></dt>
+						<dd>Constructor.</dd>
+					</dl>
+			
+	</div>
+<a name="methodadd" id="add"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">add</span> (line <span class="line-number">267</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Appends an item into the list at the end of the specified priority.  The position of the added item may  not be at the end of the list.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the index within the flattened array</li>
+				<li><span class="field">throws:</span> TInvalidOperationException if the map is read-only</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">int</span>
+		<span class="method-name">
+			add
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item to add into the list at priority</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority blank or null for the default priority</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodadd">TList::add()</a></dt>
+						<dd>Appends an item at the end of the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodclear" id="clear"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">clear</span> (line <span class="line-number">446</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes all items in the priority list by calling removeAtIndexInPriority from the last item to the first.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			clear
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodclear">TList::clear()</a></dt>
+						<dd>Removes all items in the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcontains" id="contains"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">contains</span> (line <span class="line-number">463</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> whether the list contains the item</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			contains
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodcontains">TList::contains()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodcopyFrom" id="copyFrom"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">copyFrom</span> (line <span class="line-number">638</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Copies iterable data into the priority list.</p>
+<p class="description"><p>Note, existing data in the map will be cleared first.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			copyFrom
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: the data to be copied from, must be an array or object implementing Traversable</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodcopyFrom">TList::copyFrom()</a></dt>
+						<dd>Copies iterable data into the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcount" id="count"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">count</span> (line <span class="line-number">101</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the number of items in the list.</p>
+<p class="description"><p>This method is required by Countable interface.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> number of items in the list.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			count
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodcount">TList::count()</a></dt>
+						<dd>Returns the number of items in the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodflattenPriorities" id="flattenPriorities"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">flattenPriorities</span> (line <span class="line-number">200</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This flattens the priority list into a flat array [0,...,n-1]</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array of items in the list in priority and index order</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			flattenPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetCount" id="getCount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCount</span> (line <span class="line-number">110</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the total number of items in the list</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the number of items in the list</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getCount
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodgetCount">TList::getCount()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodgetDefaultPriority" id="getDefaultPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDefaultPriority</span> (line <span class="line-number">134</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> gets the default priority of inserted items without a specified priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			getDefaultPriority
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetIterator" id="getIterator"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIterator</span> (line <span class="line-number">170</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an iterator for traversing the items in the list.</p>
+<p class="description"><p>This method is required by the interface IteratorAggregate.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> an iterator for traversing the items in the list.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Iterator</span>
+		<span class="method-name">
+			getIterator
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodgetIterator">TList::getIterator()</a></dt>
+						<dd>Returns an iterator for traversing the items in the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetPrecision" id="getPrecision"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPrecision</span> (line <span class="line-number">151</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> The precision of numeric priorities, defaults to 8</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getPrecision
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPriorities" id="getPriorities"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPriorities</span> (line <span class="line-number">179</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This returns a list of the priorities within this list, ordered lowest to highest.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priority numerics in decreasing priority order</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPriorityCount" id="getPriorityCount"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPriorityCount</span> (line <span class="line-number">120</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets the number of items at a priority within the list</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the number of items in the list at the specified priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getPriorityCount
+		</span>
+					([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: optional priority at which to count items.  if no parameter, it will be set to the default <a href="../System.Collections/TPriorityList.html#methodgetDefaultPriority">getDefaultPriority</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodindexOf" id="indexOf"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">indexOf</span> (line <span class="line-number">472</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the index of the item in the flattened list (0 based), -1 if not found.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			indexOf
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodindexOf">TList::indexOf()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodinsertAfter" id="insertAfter"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertAfter</span> (line <span class="line-number">561</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This inserts an item after another item within the list.  It uses the same priority as the  found index item and places the new item after it.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> where the item has been inserted in the flattened list</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the item does not exist</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			insertAfter
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$indexitem</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$indexitem</span><span class="var-description">: indexitem the item to index</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: the item to add after indexitem</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodinsertAfter">TList::insertAfter()</a></dt>
+						<dd>Finds the base item.  If found, the item is inserted after it.</dd>
+					</dl>
+			
+	</div>
+<a name="methodinsertAt" id="insertAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertAt</span> (line <span class="line-number">283</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Inserts an item at an index.  It reads the priority of the item at index within the flattened list  and then inserts the item at that priority-index.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidOperationException if the list is read-only</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the index specified exceeds the bound</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			insertAt
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: the specified position in the flattened list.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: new item to add</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodinsertAt">TList::insertAt()</a></dt>
+						<dd>Inserts an item at the specified position.</dd>
+					</dl>
+			
+	</div>
+<a name="methodinsertAtIndexInPriority" id="insertAtIndexInPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertAtIndexInPriority</span> (line <span class="line-number">304</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Inserts an item at the specified index within a priority.  Override and call this method to  insert your own functionality.</p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidOperationException if the list is read-only</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the index specified exceeds the bound</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			insertAtIndexInPriority
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$preserveCache</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item to add within the list.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: index within the priority to add the item, defaults to false which appends the item at the priority</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority priority of the item.  defaults to null, which sets it to the default priority</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$preserveCache</span><span class="var-description">: preserveCache specifies if this is a special quick function or not. This defaults to false.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodinsertBefore" id="insertBefore"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">insertBefore</span> (line <span class="line-number">540</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This inserts an item before another item within the list.  It uses the same priority as the  found index item and places the new item before it.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> where the item has been inserted in the flattened list</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the item does not exist</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			insertBefore
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$indexitem</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$indexitem</span><span class="var-description">: indexitem the item to index</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: the item to add before indexitem</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodinsertBefore">TList::insertBefore()</a></dt>
+						<dd>Finds the base item.  If found, the item is inserted before it.</dd>
+					</dl>
+			
+	</div>
+<a name="methoditemAt" id="itemAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">itemAt</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the item at the index of a flattened priority list.</p>
+<p class="description"><p><a href="../System.Collections/TPriorityList.html#methodoffsetGet">offsetGet</a> calls this method.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the element at the offset</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException Issued when the index is invalid</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			itemAt
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: the index of the item to get</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methoditemAt">TList::itemAt()</a></dt>
+						<dd>Returns the item at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methoditemAtIndexInPriority" id="itemAtIndexInPriority"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">itemAtIndexInPriority</span> (line <span class="line-number">248</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the item at an index within a priority</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the element at the offset, false if no element is found at the offset</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			itemAtIndexInPriority
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: the index into the list of items at priority</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: the priority which to index.  no parameter or null will result in the default priority</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methoditemsAtPriority" id="itemsAtPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">itemsAtPriority</span> (line <span class="line-number">233</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets all the items at a specific priority.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> all items at priority in index order, null if there are no items at that priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			itemsAtPriority
+		</span>
+					([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority of the items to get.  Defaults to null, filled in with the default priority, if left blank.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmergeWith" id="mergeWith"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mergeWith</span> (line <span class="line-number">666</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Merges iterable data into the priority list.</p>
+<p class="description"><p>New data will be appended to the end of the existing data.  If another TPriorityList is merged,  the incoming parameter items will be appended at the priorities they are present.  These items will be added  to the end of the existing items with equal priorities, if there are any.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mergeWith
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: the data to be merged with, must be an array or object implementing Traversable</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodmergeWith">TList::mergeWith()</a></dt>
+						<dd>Merges iterable data into the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetExists" id="offsetExists"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetExists</span> (line <span class="line-number">692</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether there is an element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			offsetExists
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to check on</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodoffsetExists">TList::offsetExists()</a></dt>
+						<dd>Returns whether there is an item at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetGet" id="offsetGet"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetGet</span> (line <span class="line-number">703</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the element at the offset, null if no element is found at the offset</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			offsetGet
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to retrieve element.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodoffsetGet">TList::offsetGet()</a></dt>
+						<dd>Returns the item at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetSet" id="offsetSet"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetSet</span> (line <span class="line-number">720</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the element at the specified offset. This method is required by the interface ArrayAccess.</p>
+<p class="description"><p>Setting elements in a priority list is not straight forword when appending and setting at the  end boundary.  When appending without an offset (a null offset), the item will be added at  the default priority.  The item may not be the last item in the list.  When appending with an  offset equal to the count of the list, the item will get be appended with the last items priority.</p><p>All together, when setting the location of an item, the item stays in that location, but appending  an item into a priority list doesn't mean the item is at the end of the list.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			offsetSet
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to set element</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: the element value</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodoffsetSet">TList::offsetSet()</a></dt>
+						<dd>Sets the item at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetUnset" id="offsetUnset"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetUnset</span> (line <span class="line-number">739</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Unsets the element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			offsetUnset
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to unset element</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodoffsetUnset">TList::offsetUnset()</a></dt>
+						<dd>Unsets the item at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodpriorityAt" id="priorityAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">priorityAt</span> (line <span class="line-number">515</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retutrns the priority of an item at a particular flattened index.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the priority of the item in the list, false if not found.    if withindex is true, an array is returned of [0 =&gt; $priority, 1 =&gt; $priorityIndex, 2 =&gt; flattenedIndex,  'priority' =&gt; $priority, 'index' =&gt; $priorityIndex, 'absindex' =&gt; flattenedIndex]</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric|array</span>
+		<span class="method-name">
+			priorityAt
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$withindex</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: index of the item within the list</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$withindex</span><span class="var-description">: withindex this specifies if the full positional data of the item within the list is returned.          This defaults to false, if no parameter is provided, so only provides the priority number of the item by default.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpriorityOf" id="priorityOf"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">priorityOf</span> (line <span class="line-number">489</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the priority of a particular item</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the priority of the item in the list, false if not found.    if withindex is true, an array is returned of [0 =&gt; $priority, 1 =&gt; $priorityIndex, 2 =&gt; flattenedIndex,  'priority' =&gt; $priority, 'index' =&gt; $priorityIndex, 'absindex' =&gt; flattenedIndex]</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric|array</span>
+		<span class="method-name">
+			priorityOf
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$withindex</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: the item to look for within the list</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$withindex</span><span class="var-description">: withindex this specifies if the full positional data of the item within the list is returned.          This defaults to false, if no parameter is provided, so only provides the priority number of the item by default.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremove" id="remove"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">remove</span> (line <span class="line-number">372</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes an item from the priority list.</p>
+<p class="description"><p>The list will search for the item.  The first matching item found will be removed from the list.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> index within the flattened list at which the item is being removed</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the item does not exist</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			remove
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item the item to be removed.</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority of item to remove. without this parameter it defaults to false.  A value of false means any priority. null will be filled in with the default priority.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodremove">TList::remove()</a></dt>
+						<dd>Removes an item from the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodremoveAt" id="removeAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeAt</span> (line <span class="line-number">401</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes an item at the specified index in the flattened list.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the removed item.</li>
+				<li><span class="field">throws:</span> TInvalidOperationException if the list is read-only</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the index specified exceeds the bound</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			removeAt
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: index of the item to be removed.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodremoveAt">TList::removeAt()</a></dt>
+						<dd>Removes an item at the specified position.</dd>
+					</dl>
+			
+	</div>
+<a name="methodremoveAtIndexInPriority" id="removeAtIndexInPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">removeAtIndexInPriority</span> (line <span class="line-number">419</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes the item at a specific index within a priority.  Override  and call this method to insert your own functionality.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the removed item.</li>
+				<li><span class="field">throws:</span> TInvalidDataValueException If the item does not exist</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			removeAtIndexInPriority
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$index</span>, [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$index</span><span class="var-description">: index of item to remove within the priority.</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority of the item to remove, defaults to null, or left blank, it is then set to the default priority</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetDefaultPriority" id="setDefaultPriority"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setDefaultPriority</span> (line <span class="line-number">143</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This must be called internally or when instantiated.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setDefaultPriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the default priority of inserted items without a specified priority</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPrecision" id="setPrecision"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPrecision</span> (line <span class="line-number">160</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This must be called internally or when instantiated.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPrecision
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$value</span><span class="var-description">: The precision of numeric priorities.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsortPriorities" id="sortPriorities"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">sortPriorities</span> (line <span class="line-number">189</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This orders the priority list internally.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sortPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtoArray" id="toArray"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArray</span> (line <span class="line-number">577</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the priority list of items in array</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArray
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TList.html#methodtoArray">TList::toArray()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodtoArrayAbovePriority" id="toArrayAbovePriority"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArrayAbovePriority</span> (line <span class="line-number">618</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Combines the map elements which have a priority above the parameter value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priorities keys with values of arrays of items that are above a specified priority.   The priorities are sorted so important priorities, lower numerics, are first.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArrayAbovePriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: the cut-off priority.  All items of priority greater than this are returned.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$inclusive</span><span class="var-description">: whether or not the input cut-off priority is inclusive.  Default: true, inclusive.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtoArrayBelowPriority" id="toArrayBelowPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArrayBelowPriority</span> (line <span class="line-number">598</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Combines the map elements which have a priority below the parameter value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priorities keys with values of arrays of items that are below a specified priority.   The priorities are sorted so important priorities, lower numerics, are first.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArrayBelowPriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: the cut-off priority.  All items of priority less than this are returned.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$inclusive</span><span class="var-description">: whether or not the input cut-off priority is inclusive.  Default: false, not inclusive.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtoPriorityArray" id="toPriorityArray"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">toPriorityArray</span> (line <span class="line-number">585</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priorities keys with values of arrays of items.  The priorities are sorted so important priorities, lower numerics, are first.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toPriorityArray
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System.Collections/TList.html">TList</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System.Collections/TList.html#method__construct">TList::__construct()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodadd">TList::add()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodclear">TList::clear()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodcontains">TList::contains()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodcopyFrom">TList::copyFrom()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodcount">TList::count()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodgetCount">TList::getCount()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodgetIterator">TList::getIterator()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodgetReadOnly">TList::getReadOnly()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodindexOf">TList::indexOf()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodinsertAfter">TList::insertAfter()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodinsertAt">TList::insertAt()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodinsertBefore">TList::insertBefore()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methoditemAt">TList::itemAt()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodmergeWith">TList::mergeWith()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodoffsetExists">TList::offsetExists()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodoffsetGet">TList::offsetGet()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodoffsetSet">TList::offsetSet()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodoffsetUnset">TList::offsetUnset()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodremove">TList::remove()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodremoveAt">TList::removeAt()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodsetReadOnly">TList::setReadOnly()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TList.html#methodtoArray">TList::toArray()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System/TComponent.html">TComponent</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System/TComponent.html#methodaddParsedObject">TComponent::addParsedObject()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodattachEventHandler">TComponent::attachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanGetProperty">TComponent::canGetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanSetProperty">TComponent::canSetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcreatedOnTemplate">TComponent::createdOnTemplate()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methoddetachEventHandler">TComponent::detachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateExpression">TComponent::evaluateExpression()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateStatements">TComponent::evaluateStatements()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetEventHandlers">TComponent::getEventHandlers()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetSubProperty">TComponent::getSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEvent">TComponent::hasEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEventHandler">TComponent::hasEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasProperty">TComponent::hasProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodraiseEvent">TComponent::raiseEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodsetSubProperty">TComponent::setSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__call">TComponent::__call()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__get">TComponent::__get()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__set">TComponent::__set()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__sleep">TComponent::__sleep()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__wakeup">TComponent::__wakeup()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 19 Jan 2013 13:03:29 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>
