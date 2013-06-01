@@ -1,4 +1,4 @@
-body{width:100%;margin:0;padding:0;text-align:center;font-family: Helvetica;}
+body{width:100%;margin:0;padding:0;text-align:center;font-family: Helvetica, Verdana, sans-serif;}
 #wrapper{margin:0 auto;text-align:left;}
 section,.container,footer{width:960px;margin: 0 auto;}
 form{margin:0;padding:0;}
@@ -24,3 +24,31 @@ nav a{margin-left:30px;}
 .leftalign{text-align:left;}
 #listvenue{padding:8px;border:3px solid #000;background:#ff7400;border-radius:6px;}
 .clear{clear:both;}
+.rightalign{text-align:right;}
+.notopmargin{margin-top:0;}
+
+aside{width:260px;float:left;}
+aside ul{margin:0;padding:0;}
+aside ul li{list-style-type:none;margin-left:10px;padding:0;}
+aside label{margin-left:10px;}
+article{width:700px;margin-left:260px;}
+h3{padding:0px;margin:0;}
+.result{width:700px;height:200px;margin-top:30px;}
+.result img{float:left;margin:0;padding:0;border:0;margin-right:30px;}
+
+#priceslider{margin-left:10px;}
+
+.price{float:right;width:60px;border:1px solid #eee; background:#ccc;padding:12px;text-align:center;border-radius:8px;}
+.dollar{font-size:22px;}
+
+#profile{margin-top:30px;}
+#profile h1{font-size:32px;}
+#profile h3{margin-top:20px;}
+
+#schedule{margin-left:10px;}
+#schedule label{display:block;margin:0;}
+#schedule input{width:160px;margin-bottom:20px;}
+#schedule select{width:160px;padding:8px;}
+#schedule select option{border:1px solid blue;}
+#time{}
+.btn{margin-top:20px;background:orange;padding:10px;border:1px solid blue;}
