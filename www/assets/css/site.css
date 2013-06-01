@@ -20,6 +20,7 @@ nav a{margin-left:30px;}
 
 .featuredrow{}
 .featuredrowitem{float:left;width:320px;display:inline;padding-bottom:20px;}
+.featuredrowitem img {width:300px; height: 150px}
 .leftalign{text-align:left;}
 #listvenue{padding:8px;border:3px solid #000;background:#ff7400;border-radius:6px;}
 .clear{clear:both;}

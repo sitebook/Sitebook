@@ -52,29 +52,29 @@
 <h2>Premiere Locations near Dallas, Texas</h2>
 <div class="featuredrow">
 	<div class="featuredrowitem">
-		<a href="#"><img src="http://placehold.it/300x150" /></a>
+		<a href="#"><img src="assets/img/cm1.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 	<div class="featuredrowitem">
-		<a href=""><img src="http://placehold.it/300x150" /></a>
+		<a href=""><img src="assets/img/cm2.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 	<div class="featuredrowitem">
-		<a href=""><img src="http://placehold.it/300x150" /></a>
+		<a href=""><img src="assets/img/cm3.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 </div>
 <div class="featuredrow">
 	<div class="featuredrowitem">
-		<a href="#"><img src="http://placehold.it/300x150" /></a>
+		<a href="#"><img src="assets/img/cm3.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 	<div class="featuredrowitem">
-		<a href=""><img src="http://placehold.it/300x150" /></a>
+		<a href=""><img src="assets/img/ss1.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 	<div class="featuredrowitem">
-		<a href=""><img src="http://placehold.it/300x150" /></a>
+		<a href=""><img src="assets/img/cm2.jpg" /></a>
 		<p>About this venue&hellip;</p>
 	</div>
 </div>
