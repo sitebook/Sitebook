@@ -21,5 +21,32 @@ nav a{margin-left:30px;}
 .featuredrow{}
 .featuredrowitem{float:left;width:320px;display:inline;padding-bottom:20px;}
 .leftalign{text-align:left;}
+.rightalign{text-align:right;}
 #listvenue{padding:8px;border:1px solid #fff;background:orange;border-radius:3px;}
 .clear{clear:both;}
+.notopmargin{margin-top:0;}
+
+aside{width:260px;float:left;}
+aside ul{margin:0;padding:0;}
+aside ul li{list-style-type:none;margin-left:10px;padding:0;}
+aside label{margin-left:10px;}
+article{width:700px;margin-left:260px;}
+h3{padding:0px;margin:0;}
+.result{width:700px;height:200px;margin-top:30px;}
+.result img{float:left;margin:0;padding:0;border:0;margin-right:30px;}
+
+#priceslider{margin-left:10px;}
+
+.price{float:right;width:60px;border:1px solid #eee; background:#ccc;padding:12px;text-align:center;border-radius:8px;}
+.dollar{font-size:22px;}
+
+#profile{margin-top:30px;}
+#profile h1{font-size:32px;}
+#profile h3{margin-top:20px;}
+
+#schedule{margin-left:10px;}
+#schedule label{display:block;margin:0;}
+#schedule input{width:160px;margin-bottom:20px;}
+#schedule select{width:160px;}
+#schedule select option{}
+#time{}

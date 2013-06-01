@@ -27,41 +27,46 @@
 <section>
 <aside>
 	<div>
-		<h4>Heading</h4>
-		<div>
-		function
+		<h4 class="notopmargin">Map View</h4>
+		<div id="mapbox">
+		<img src="http://placehold.it/200x200" />
 		</div>
 	</div>
 	
 	<div>
-		<h4>Heading</h4>
+		<h4>Location Type</h4>
 		<div>
-		function
-		</div>
+		<ul>
+			<li><input type="checkbox" name="hotel" id="location[hotel]" /><label for="location[hotel]">Hotel</label></li>
+			<li><input type="checkbox" name="church" id="location[church]" /><label for="location[church]">Church</label></li>
+			<li><input type="checkbox" name="historic" id="location[historic]" /><label for="location[historic]">Historic</label></li>
+		</ul>
+	</div>
 	</div>
 	
 	<div>
-		<h4>Heading</h4>
+		<h4>Price Range</h4>
 		<div>
-		function
-		</div>
-	</div>
-	
-	<div>
-		<h4>Heading</h4>
-		<div>
-		function
+		<input id="priceslider" type="range" min="0" max="500" />
 		</div>
 	</div>
 </aside>
 
 <article>
-<div class="result">
-<img src="http://placehold.it/300x150" />
-<h3>W Hotel</h3>	
-<p>Full access to venue</p>
-
-</div>
+	<div class="result">
+	<img src="http://placehold.it/200x150" />
+	<h3><a href="#">W Hotel</a></h3>
+	<p>Full access to venue<span class="price"><sup>$</sup><span class="dollar">100</span><br />per hour</span></p>
+	<div>reviews</div>
+	</div>
+	
+	<div class="result">
+	<img src="http://placehold.it/200x150" />
+	<h3><a href="#">Belo Mansion</a></h3>
+	<p>Full access to venue<span class="price"><sup>$</sup><span class="dollar">100</span><br />per hour</span></p>
+	<div>reviews</div>
+	</div>
+	
 </article>
 </section>
 <div class="clear"></div>
