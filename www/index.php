@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <title>Sitebook</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
 <link href='http://fonts.googleapis.com/css?family=Engagement' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="./assets/css/site.css" media="all">
+<link rel="stylesheet" type="text/css" href="assets/css/site.css" media="all">
 </head>
 
 <body>
@@ -12,7 +12,7 @@
 
 <nav>
 	<div id="navleft">
-		<a href="#" id="logo">Sitebook</a>
+		<a href="#" id="logo"><img src="logo.png"/></a>
 		<input type="text" placeholder="Search venues" />
 		<a href="#">Browse</a>
 	</div>	
