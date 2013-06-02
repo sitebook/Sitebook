@@ -1,0 +1,1374 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class TPriorityMap</title>
+			<link rel="stylesheet" href="../media/stylesheet.css" />
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">Class TPriorityMap</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+															<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">TPriorityMap class</p>
+<p class="description"><p>TPriorityMap implements a collection that takes key-value pairs with  a priority to allow key-value pairs to be ordered.  This ordering is  important when flattening the map. When flattening the map, if some  key-value pairs are required to be before or after others, use this  class to keep order to your map.</p><p>You can access, add or remove an item with a key by using  <a href="../System.Collections/TPriorityMap.html#methoditemAt">itemAt</a>, <a href="../System.Collections/TPriorityMap.html#methodadd">add</a>, and <a href="../System.Collections/TPriorityMap.html#methodremove">remove</a>.  These functions  can optionally take a priority parameter to allow access to specific  priorities.  TPriorityMap is functionally backward compatible  with <a href="../System.Collections/TMap.html">TMap</a>.</p><p>To get the number of the items in the map, use <a href="../System.Collections/TPriorityMap.html#methodgetCount">getCount</a>.  TPriorityMap can also be used like a regular array as follows,  <div class="src-code"><ol><li><div class="src-line">&nbsp;<span class="src-var">$map</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]</span>=<span class="src-var">$value</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;add&nbsp;a&nbsp;key-value&nbsp;pair</span></div></li>
+<li><div class="src-line">&nbsp;unset<span class="src-sym">(</span><span class="src-var">$map</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;</span><span class="src-comm">//&nbsp;remove&nbsp;the&nbsp;value&nbsp;with&nbsp;the&nbsp;specified&nbsp;key</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">if</span><span class="src-sym">(</span>isset<span class="src-sym">(</span><span class="src-var">$map</span><span class="src-sym">[</span><span class="src-var">$key</span><span class="src-sym">]</span><span class="src-sym">))&nbsp;</span><span class="src-comm">//&nbsp;if&nbsp;the&nbsp;map&nbsp;contains&nbsp;the&nbsp;key</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-key">foreach</span><span class="src-sym">(</span><span class="src-var">$map&nbsp;</span><span class="src-key">as&nbsp;</span><span class="src-var">$key</span>=&gt;<span class="src-var">$value</span><span class="src-sym">)&nbsp;</span><span class="src-comm">//&nbsp;traverse&nbsp;the&nbsp;items&nbsp;in&nbsp;the&nbsp;map</span></div></li>
+<li><div class="src-line">&nbsp;<span class="src-var">$n</span>=<a href="../System.Collections/TPriorityMap.html#methodcount">count</a><span class="src-sym">(</span><span class="src-var">$map</span><span class="src-sym">)</span><span class="src-sym">;&nbsp;&nbsp;</span><span class="src-comm">//&nbsp;returns&nbsp;the&nbsp;number&nbsp;of&nbsp;items&nbsp;in&nbsp;the&nbsp;map</span></div></li>
+</ol></div>  Using standard array access method like these will always use  the default priority.</p><p>An item that doesn't specify a priority will receive the default  priority.  The default priority is set during the instantiation  of a new TPriorityMap. If no custom default priority is specified,  the standard default priority of 10 is used.</p><p>Priorities with significant digits below precision will be rounded.</p><p>A priority may also be a numeric with decimals.  This is set  during the instantiation of a new TPriorityMap.  The default is 8 decimal places for a priority.  If a negative number  is used, rounding occurs into the integer space rather than in  the decimal space.  See <a href="http://www.php.net/round">http://www.php.net/round</a>.</p></p>
+	<ul class="tags">
+				<li><span class="field">author:</span> Brad Anderson &lt;<a href="mailto:javalizard@mac.com">javalizard@mac.com</a>&gt;</li>
+				<li><span class="field">version:</span> $Id: TPriorityMap.php 2817 2010-04-18 04:25:03Z javalizard $</li>
+				<li><span class="field">since:</span> 3.2a</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_Collections---TPriorityMap.php.html">/Collections/TPriorityMap.php</a> (line <span class="field">60</span>)
+		</p>
+		
+				
+		<pre><a href="../System/TComponent.html">TComponent</a>
+   |
+   --<a href="../System.Collections/TMap.html">TMap</a>
+      |
+      --TPriorityMap</pre>
+	
+			</div>
+</div>
+
+
+
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+												<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+																																																																																																																																																																																																																																																																												
+												<div class="method-definition">
+											<span class="method-result">TPriorityMap</span>
+										<a href="#__construct" title="details" class="method-name">__construct</a>
+											([<span class="var-type">map|array|Iterator|<a href="../System.Collections/TPriorityMap.html">TPriorityMap</a></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$readOnly</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$defaultPriority</span> = <span class="var-default">10</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$precision</span> = <span class="var-default">8</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#add" title="details" class="method-name">add</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">numeric|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#clear" title="details" class="method-name">clear</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#contains" title="details" class="method-name">contains</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#copyFrom" title="details" class="method-name">copyFrom</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#count" title="details" class="method-name">count</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#flattenPriorities" title="details" class="method-name">flattenPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getCount" title="details" class="method-name">getCount</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#getDefaultPriority" title="details" class="method-name">getDefaultPriority</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">Iterator</span>
+										<a href="#getIterator" title="details" class="method-name">getIterator</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getKeys" title="details" class="method-name">getKeys</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getPrecision" title="details" class="method-name">getPrecision</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#getPriorities" title="details" class="method-name">getPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">integer</span>
+										<a href="#getPriorityCount" title="details" class="method-name">getPriorityCount</a>
+											([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#getReadOnly" title="details" class="method-name">getReadOnly</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#itemAt" title="details" class="method-name">itemAt</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#itemsAtPriority" title="details" class="method-name">itemsAtPriority</a>
+											([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#mergeWith" title="details" class="method-name">mergeWith</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">boolean</span>
+										<a href="#offsetExists" title="details" class="method-name">offsetExists</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#offsetGet" title="details" class="method-name">offsetGet</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#offsetSet" title="details" class="method-name">offsetSet</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#offsetUnset" title="details" class="method-name">offsetUnset</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#priorityAt" title="details" class="method-name">priorityAt</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$key</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#priorityOf" title="details" class="method-name">priorityOf</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">mixed</span>
+										<a href="#remove" title="details" class="method-name">remove</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">numeric|false|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setDefaultPriority" title="details" class="method-name">setDefaultPriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setPrecision" title="details" class="method-name">setPrecision</a>
+											(<span class="var-type">integer</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">numeric</span>
+										<a href="#setPriorityAt" title="details" class="method-name">setPriorityAt</a>
+											(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">numeric|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#setReadOnly" title="details" class="method-name">setReadOnly</a>
+											(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$value</span>)
+									</div>
+																<div class="method-definition">
+											<span class="method-result">void</span>
+										<a href="#sortPriorities" title="details" class="method-name">sortPriorities</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArray" title="details" class="method-name">toArray</a>
+										()
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArrayAbovePriority" title="details" class="method-name">toArrayAbovePriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">true</span>])
+									</div>
+																<div class="method-definition">
+											<span class="method-result">array</span>
+										<a href="#toArrayBelowPriority" title="details" class="method-name">toArrayBelowPriority</a>
+											(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">false</span>])
+									</div>
+								</div>
+		</div>
+	</div>		
+
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+
+<a name="method__construct" id="__construct"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">Constructor __construct</span> (line <span class="line-number">100</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor.</p>
+<p class="description"><p>Initializes the array with an array or an iterable object.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is not null and neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">TPriorityMap</span>
+		<span class="method-name">
+			__construct
+		</span>
+					([<span class="var-type">map|array|Iterator|<a href="../System.Collections/TPriorityMap.html">TPriorityMap</a></span>&nbsp;<span class="var-name">$data</span> = <span class="var-default">null</span>], [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$readOnly</span> = <span class="var-default">false</span>], [<span class="var-type">numeric</span>&nbsp;<span class="var-name">$defaultPriority</span> = <span class="var-default">10</span>], [<span class="var-type">integer</span>&nbsp;<span class="var-name">$precision</span> = <span class="var-default">8</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">map|array|Iterator|<a href="../System.Collections/TPriorityMap.html">TPriorityMap</a></span>
+				<span class="var-name">$data</span><span class="var-description">: the intial data. Default is null, meaning no initialization.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$readOnly</span><span class="var-description">: whether the list is read-only</span>			</li>
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$defaultPriority</span><span class="var-description">: the default priority of items without specified priorities.</span>			</li>
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$precision</span><span class="var-description">: the precision of the numeric priorities</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#method__construct">TMap::__construct()</a></dt>
+						<dd>Constructor.</dd>
+					</dl>
+			
+	</div>
+<a name="methodadd" id="add"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">add</span> (line <span class="line-number">346</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Adds an item into the map.  A third parameter may be used to set the priority  of the item within the map.  Priority is primarily used during when flattening  the map into an array where order may be and important factor of the key-value  pairs within the array.</p>
+<p class="description"><p>Note, if the specified key already exists, the old value will be overwritten.  No duplicate keys are allowed regardless of priority.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> priority at which the pair was added</li>
+				<li><span class="field">throws:</span> TInvalidOperationException if the map is read-only</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			add
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">numeric|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: key</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: value</span>			</li>
+					<li>
+				<span class="var-type">numeric|null</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority, default: null, filled in with default priority</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodadd">TMap::add()</a></dt>
+						<dd>Adds an item into the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodclear" id="clear"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">clear</span> (line <span class="line-number">440</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes all items in the map.  remove is called on all items.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			clear
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodclear">TMap::clear()</a></dt>
+						<dd>Removes all items in the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcontains" id="contains"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">contains</span> (line <span class="line-number">451</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> whether the map contains an item with the specified key</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			contains
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: the key</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodcontains">TMap::contains()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodcopyFrom" id="copyFrom"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">copyFrom</span> (line <span class="line-number">515</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Copies iterable data into the map.</p>
+<p class="description"><p>Note, existing data in the map will be cleared first.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			copyFrom
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: the data to be copied from, must be an array, object implementing  Traversable, or a TPriorityMap</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodcopyFrom">TMap::copyFrom()</a></dt>
+						<dd>Copies iterable data into the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodcount" id="count"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">count</span> (line <span class="line-number">200</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the number of items in the map.</p>
+<p class="description"><p>This method is required by Countable interface.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> number of items in the map.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			count
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodcount">TMap::count()</a></dt>
+						<dd>Returns the number of items in the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodflattenPriorities" id="flattenPriorities"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">flattenPriorities</span> (line <span class="line-number">184</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This flattens the priority map into a flat array [0,...,n-1]</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> array of items in the list in priority and index order</li>
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			flattenPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetCount" id="getCount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getCount</span> (line <span class="line-number">208</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> the number of items in the map</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getCount
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodgetCount">TMap::getCount()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodgetDefaultPriority" id="getDefaultPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getDefaultPriority</span> (line <span class="line-number">128</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> gets the default priority of inserted items without a specified priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			getDefaultPriority
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetIterator" id="getIterator"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getIterator</span> (line <span class="line-number">164</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns an iterator for traversing the items in the map.</p>
+<p class="description"><p>This method is required by the interface IteratorAggregate.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> an iterator for traversing the items in the map.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">Iterator</span>
+		<span class="method-name">
+			getIterator
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodgetIterator">TMap::getIterator()</a></dt>
+						<dd>Returns an iterator for traversing the items in the list.</dd>
+					</dl>
+			
+	</div>
+<a name="methodgetKeys" id="getKeys"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getKeys</span> (line <span class="line-number">244</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the keys within the map ordered through the priority of each key-value pair</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the key list</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getKeys
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodgetKeys">TMap::getKeys()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodgetPrecision" id="getPrecision"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPrecision</span> (line <span class="line-number">145</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> The precision of numeric priorities, defaults to 8</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getPrecision
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPriorities" id="getPriorities"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPriorities</span> (line <span class="line-number">234</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This returns a list of the priorities within this map, ordered lowest to highest.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priority numerics in decreasing priority order</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			getPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodgetPriorityCount" id="getPriorityCount"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">getPriorityCount</span> (line <span class="line-number">219</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets the number of items at a priority within the map.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the number of items in the map at the specified priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">integer</span>
+		<span class="method-name">
+			getPriorityCount
+		</span>
+					([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: optional priority at which to count items.  if no parameter,  it will be set to the default <a href="../System.Collections/TPriorityMap.html#methodgetDefaultPriority">getDefaultPriority</a></span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodgetReadOnly" id="getReadOnly"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">getReadOnly</span> (line <span class="line-number">112</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">return:</span> whether this map is read-only or not. Defaults to false.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			getReadOnly
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodgetReadOnly">TMap::getReadOnly()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methoditemAt" id="itemAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">itemAt</span> (line <span class="line-number">257</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the item with the specified key.  If a priority is specified, only items</p>
+<p class="description"><p>within that specific priority will be selected</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the element at the offset, null if no element is found at the offset</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			itemAt
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">mixed</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: the key</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$priority</span><span class="var-description">: the priority.  null is the default priority, false is any priority,  and numeric is a specific priority.  default: false, any priority.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methoditemAt">TMap::itemAt()</a></dt>
+						<dd>Returns the item with the specified key.</dd>
+					</dl>
+			
+	</div>
+<a name="methoditemsAtPriority" id="itemsAtPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">itemsAtPriority</span> (line <span class="line-number">296</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Gets all the items at a specific priority.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> all items at priority in index order, null if there are no items at that priority</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			itemsAtPriority
+		</span>
+					([<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority of the items to get.  Defaults to null, filled in with the default priority, if left blank.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodmergeWith" id="mergeWith"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">mergeWith</span> (line <span class="line-number">545</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Merges iterable data into the map.</p>
+<p class="description"><p>Existing data in the map will be kept and overwritten if the keys are the same.</p></p>
+	<ul class="tags">
+				<li><span class="field">throws:</span> TInvalidDataTypeException If data is neither an array nor an iterator.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			mergeWith
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$data</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$data</span><span class="var-description">: the data to be merged with, must be an array, object implementing  Traversable, or a TPriorityMap</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodmergeWith">TMap::mergeWith()</a></dt>
+						<dd>Merges iterable data into the map.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetExists" id="offsetExists"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetExists</span> (line <span class="line-number">570</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns whether there is an element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">boolean</span>
+		<span class="method-name">
+			offsetExists
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to check on</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodoffsetExists">TMap::offsetExists()</a></dt>
+						<dd>Returns whether there is an element at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetGet" id="offsetGet"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetGet</span> (line <span class="line-number">581</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the element at the offset, null if no element is found at the offset</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			offsetGet
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to retrieve element.</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodoffsetGet">TMap::offsetGet()</a></dt>
+						<dd>Returns the element at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetSet" id="offsetSet"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetSet</span> (line <span class="line-number">592</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets the element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			offsetSet
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$offset</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to set element</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: the element value</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodoffsetSet">TMap::offsetSet()</a></dt>
+						<dd>Sets the element at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodoffsetUnset" id="offsetUnset"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">offsetUnset</span> (line <span class="line-number">602</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Unsets the element at the specified offset.</p>
+<p class="description"><p>This method is required by the interface ArrayAccess.</p></p>
+	<ul class="tags">
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			offsetUnset
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$offset</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$offset</span><span class="var-description">: the offset to unset element</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodoffsetUnset">TMap::offsetUnset()</a></dt>
+						<dd>Unsets the element at the specified offset.</dd>
+					</dl>
+			
+	</div>
+<a name="methodpriorityAt" id="priorityAt"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">priorityAt</span> (line <span class="line-number">324</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Retutrns the priority of an item at a particular flattened index.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> priority of the item in the map</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			priorityAt
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$key</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$key</span><span class="var-description">: index of the item within the map</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodpriorityOf" id="priorityOf"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">priorityOf</span> (line <span class="line-number">310</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Returns the priority of a particular item within the map.  This searches the map for the item.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> priority of the item in the map</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			priorityOf
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$item</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$item</span><span class="var-description">: item to look for within the map</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodremove" id="remove"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">remove</span> (line <span class="line-number">388</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Removes an item from the map by its key. If no priority, or false, is specified</p>
+<p class="description"><p>then priority is irrelevant. If null is used as a parameter for priority, then  the priority will be the default priority.  If a priority is specified, or  the default priority is specified, only key-value pairs in that priority  will be affected.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the removed value, null if no such key exists.</li>
+				<li><span class="field">throws:</span> TInvalidOperationException if the map is read-only</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			remove
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">numeric|false|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: the key of the item to be removed</span>			</li>
+					<li>
+				<span class="var-type">numeric|false|null</span>
+				<span class="var-name">$priority</span><span class="var-description">: priority.  False is any priority, null is the  default priority, and numeric is a specific priority</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodremove">TMap::remove()</a></dt>
+						<dd>Removes an item from the map by its key.</dd>
+					</dl>
+			
+	</div>
+<a name="methodsetDefaultPriority" id="setDefaultPriority"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setDefaultPriority</span> (line <span class="line-number">137</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This must be called internally or when instantiated.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setDefaultPriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$value</span><span class="var-description">: sets the default priority of inserted items without a specified priority</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPrecision" id="setPrecision"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPrecision</span> (line <span class="line-number">154</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This must be called internally or when instantiated.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setPrecision
+		</span>
+					(<span class="var-type">integer</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">integer</span>
+				<span class="var-name">$value</span><span class="var-description">: The precision of numeric priorities.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetPriorityAt" id="setPriorityAt"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">setPriorityAt</span> (line <span class="line-number">277</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">This changes an item's priority.  Specify the item and the new priority.</p>
+<p class="description"><p>This method is exactly the same as <a href="../System.Collections/TPriorityMap.html#methodoffsetGet">offsetGet</a>.</p></p>
+	<ul class="tags">
+				<li><span class="field">return:</span> old priority of the item</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">numeric</span>
+		<span class="method-name">
+			setPriorityAt
+		</span>
+					(<span class="var-type">mixed</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">numeric|null</span>&nbsp;<span class="var-name">$priority</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$key</span><span class="var-description">: the key</span>			</li>
+					<li>
+				<span class="var-type">numeric|null</span>
+				<span class="var-name">$priority</span><span class="var-description">: the priority.  default: null, filled in with the default priority numeric.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodsetReadOnly" id="setReadOnly"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">setReadOnly</span> (line <span class="line-number">120</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			setReadOnly
+		</span>
+					(<span class="var-type">boolean</span>&nbsp;<span class="var-name">$value</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$value</span><span class="var-description">: whether this list is read-only or not</span>			</li>
+				</ul>
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodsetReadOnly">TMap::setReadOnly()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodsortPriorities" id="sortPriorities"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">sortPriorities</span> (line <span class="line-number">173</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Orders the priority list internally.</p>
+	<ul class="tags">
+				<li><span class="field">access:</span> protected</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			sortPriorities
+		</span>
+				()
+			</div>
+	
+		
+			
+	</div>
+<a name="methodtoArray" id="toArray"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArray</span> (line <span class="line-number">463</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">When the map is flattened into an array, the priorities are taken into  account and elements of the map are ordered in the array according to  their priority.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the list of items in array</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArray
+		</span>
+				()
+			</div>
+	
+		
+			<hr class="separator" />
+		<div class="notes">Redefinition of:</div>
+		<dl>
+			<dt><a href="../System.Collections/TMap.html#methodtoArray">TMap::toArray()</a></dt>
+					</dl>
+			
+	</div>
+<a name="methodtoArrayAbovePriority" id="toArrayAbovePriority"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArrayAbovePriority</span> (line <span class="line-number">495</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Combines the map elements which have a priority above the parameter value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priorities keys with values of arrays of items that are above a specified priority.   The priorities are sorted so important priorities, lower numerics, are first.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArrayAbovePriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">true</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: the cut-off priority.  All items of priority greater than this are returned.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$inclusive</span><span class="var-description">: whether or not the input cut-off priority is inclusive.  Default: true, inclusive.</span>			</li>
+				</ul>
+		
+			
+	</div>
+<a name="methodtoArrayBelowPriority" id="toArrayBelowPriority"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		<span class="method-title">toArrayBelowPriority</span> (line <span class="line-number">475</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Combines the map elements which have a priority below the parameter value</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> the array of priorities keys with values of arrays of items that are below a specified priority.   The priorities are sorted so important priorities, lower numerics, are first.</li>
+				<li><span class="field">access:</span> public</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">array</span>
+		<span class="method-name">
+			toArrayBelowPriority
+		</span>
+					(<span class="var-type">numeric</span>&nbsp;<span class="var-name">$priority</span>, [<span class="var-type">boolean</span>&nbsp;<span class="var-name">$inclusive</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">numeric</span>
+				<span class="var-name">$priority</span><span class="var-description">: the cut-off priority.  All items of priority less than this are returned.</span>			</li>
+					<li>
+				<span class="var-type">boolean</span>
+				<span class="var-name">$inclusive</span><span class="var-description">: whether or not the input cut-off priority is inclusive.  Default: false, not inclusive.</span>			</li>
+				</ul>
+		
+			
+	</div>
+							<h4>Inherited Methods</h4>
+				<a name='inherited_methods'><!-- --></a>	
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System.Collections/TMap.html">TMap</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System.Collections/TMap.html#method__construct">TMap::__construct()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodadd">TMap::add()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodclear">TMap::clear()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodcontains">TMap::contains()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodcopyFrom">TMap::copyFrom()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodcount">TMap::count()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodgetCount">TMap::getCount()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodgetIterator">TMap::getIterator()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodgetKeys">TMap::getKeys()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodgetReadOnly">TMap::getReadOnly()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methoditemAt">TMap::itemAt()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodmergeWith">TMap::mergeWith()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodoffsetExists">TMap::offsetExists()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodoffsetGet">TMap::offsetGet()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodoffsetSet">TMap::offsetSet()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodoffsetUnset">TMap::offsetUnset()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodremove">TMap::remove()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodsetReadOnly">TMap::setReadOnly()</a></span><br>
+													<span class="method-name"><a href="../System.Collections/TMap.html#methodtoArray">TMap::toArray()</a></span><br>
+											</blockquote>
+									<!-- =========== Summary =========== -->
+					<p>Inherited From <span class="classname"><a href="../System/TComponent.html">TComponent</a></span></p>
+					<blockquote>
+													<span class="method-name"><a href="../System/TComponent.html#methodaddParsedObject">TComponent::addParsedObject()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodattachEventHandler">TComponent::attachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanGetProperty">TComponent::canGetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcanSetProperty">TComponent::canSetProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodcreatedOnTemplate">TComponent::createdOnTemplate()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methoddetachEventHandler">TComponent::detachEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateExpression">TComponent::evaluateExpression()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodevaluateStatements">TComponent::evaluateStatements()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetEventHandlers">TComponent::getEventHandlers()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodgetSubProperty">TComponent::getSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEvent">TComponent::hasEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasEventHandler">TComponent::hasEventHandler()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodhasProperty">TComponent::hasProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodraiseEvent">TComponent::raiseEvent()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#methodsetSubProperty">TComponent::setSubProperty()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__call">TComponent::__call()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__get">TComponent::__get()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__set">TComponent::__set()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__sleep">TComponent::__sleep()</a></span><br>
+													<span class="method-name"><a href="../System/TComponent.html#method__wakeup">TComponent::__wakeup()</a></span><br>
+											</blockquote>
+										
+		</div>
+	</div>
+
+
+	<p class="notes" id="credit">
+		Documentation generated on Sat, 19 Jan 2013 13:03:30 +0100 by <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.4.3</a>
+	</p>
+	</div></body>
+</html>

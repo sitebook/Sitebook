@@ -35,7 +35,9 @@ CREATE TABLE `customer` (
 CREATE TABLE `schedule` (
   `schedule_id` varchar(36) PRIMARY KEY,
   `site_id` varchar(36) DEFAULT NULL,
-  `start_time` date DEFAULT NULL,
+  `open_day_of_week` smallint(6) DEFAULT NULL,
+  `open_hour` smallint(6) DEFAULT NULL,
+  `open_minute` smallint(6) DEFAULT NULL,
   `duration_minutes` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
