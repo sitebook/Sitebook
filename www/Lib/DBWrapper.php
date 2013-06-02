@@ -1,4 +1,5 @@
 <?php
+include_once 'Connection.xml';
 include_once 'DASException.php';
 
 class DBWrapper
@@ -65,7 +66,7 @@ class DBWrapper
     {
     	try 
     	{
-    		$file = $_SERVER{'DOCUMENT_ROOT'} .'Lib/Connection.xml';
+    		$file = $_SERVER{'DOCUMENT_ROOT'} .'SiteBook/Lib/Connection.xml';
     		if(file_exists($file))
     		{
 	    		$xml = simplexml_load_file($file);

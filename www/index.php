@@ -1,3 +1,12 @@
+<<<<<<< HEAD
+<?php
+
+require_once 'Lib/bootstrap.php';
+require_once 'Lib/Controller.php';
+require_once 'Lib/View.php';
+$app = new Bootstrap();
+?>
+=======
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -90,3 +99,4 @@
 </div>
 </body>
 </html>
+>>>>>>> 703939c996b241d23d41bab8d97df9c71aa4e2c7
